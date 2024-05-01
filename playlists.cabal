@@ -1,17 +1,17 @@
-cabal-version:      2.2
-name:               playlists
-version:            0.5.1
-homepage:           https://github.com/pjones/playlists
-bug-reports:        https://github.com/pjones/playlists/issues
-license:            BSD-3-Clause
-license-file:       LICENSE
-author:             Peter Jones <pjones@devalot.com>
-maintainer:         Peter Jones <pjones@devalot.com>
-copyright:          Copyright (c) 2013-2020 Peter Jones
-category:           Text
-build-type:         Simple
-tested-with:        GHC ==8.6.5 || ==8.8.4 || ==8.10.2
-synopsis:           Library and executable for working with playlist files.
+cabal-version: 3.0
+name: playlists
+version: 0.5.1
+homepage: https://github.com/pjones/playlists
+bug-reports: https://github.com/pjones/playlists/issues
+license: BSD-3-Clause
+license-file: LICENSE
+author: Peter Jones <pjones@devalot.com>
+maintainer: Peter Jones <pjones@devalot.com>
+copyright: Copyright (c) 2013-2020 Peter Jones
+category: Text
+build-type: Simple
+tested-with: ghc ==8.6.5 || ==8.8.4 || ==8.10.2
+synopsis: Library and executable for working with playlist files.
 description:
   Playlists is a library for working with media playlist files.  The
   original motivation for the library was extracting URLs for
@@ -40,38 +40,43 @@ description:
 
 --------------------------------------------------------------------------------
 extra-source-files:
-  README.md
   CHANGES.md
+  README.md
   test/*.m3u
   test/*.pls
 
 --------------------------------------------------------------------------------
 source-repository head
-  type:     git
+  type: git
   location: https://github.com/pjones/playlists.git
 
 --------------------------------------------------------------------------------
 common dependencies
   build-depends:
-    , attoparsec  >=0.10 && <0.14
-    , base        >=4.6  && <5
-    , bytestring  >=0.10 && <0.12
-    , filepath    >=1.3  && <1.5
-    , text        >=0.11 && <1.3
-    , word8       >=0.0  && <0.2
+    attoparsec >=0.10 && <0.15,
+    base >=4.6 && <5,
+    bytestring >=0.10 && <0.13,
+    filepath >=1.3 && <1.6,
+    text >=0.11 && <2.2,
+    word8 >=0.0 && <0.2,
 
 --------------------------------------------------------------------------------
 common options
   default-language: Haskell2010
   ghc-options:
-    -Wall -Wno-name-shadowing -Werror=incomplete-record-updates
-    -Werror=incomplete-uni-patterns -Werror=missing-home-modules
-    -Widentities -Wmissing-export-lists -Wredundant-constraints
+    -Wall
+    -Wno-name-shadowing
+    -Werror=incomplete-record-updates
+    -Werror=incomplete-uni-patterns
+    -Werror=missing-home-modules
+    -Widentities
+    -Wmissing-export-lists
+    -Wredundant-constraints
 
 --------------------------------------------------------------------------------
 library
-  import:          dependencies, options
-  hs-source-dirs:  src
+  import: dependencies, options
+  hs-source-dirs: src
   exposed-modules: Text.Playlist
   other-modules:
     Text.Playlist.Internal.Attoparsec
@@ -86,19 +91,19 @@ library
 
 --------------------------------------------------------------------------------
 executable playlist
-  import:         dependencies, options
+  import: dependencies, options
   hs-source-dirs: util
-  main-is:        playlist.hs
+  main-is: playlist.hs
   build-depends:
-    , optparse-applicative  >=0.10 && <0.17
-    , playlists
+    optparse-applicative >=0.10 && <0.19,
+    playlists,
 
 --------------------------------------------------------------------------------
 test-suite test
-  import:         dependencies, options
-  type:           exitcode-stdio-1.0
+  import: dependencies, options
+  type: exitcode-stdio-1.0
   hs-source-dirs: test
-  main-is:        Main.hs
+  main-is: Main.hs
   other-modules:
     Examples
     Helper
@@ -107,8 +112,8 @@ test-suite test
     ResolveSpec
 
   build-depends:
-    , hspec      >=1.4.0
-    , playlists
+    hspec >=1.4.0,
+    playlists,
 
 ------------------------------------------------------------------------------
 -- test-suite doctests
